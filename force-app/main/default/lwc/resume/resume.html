@@ -1,0 +1,35 @@
+<template>
+
+     <div slot="action" onclick={basic} data-id="BasicDetailsPage"></div>
+
+
+     
+
+    <template if:true={BasicDetailsPage}>
+        <c-basic-details-comp onback={backFromBasicDetails}></c-basic-details-comp>
+    </template>
+
+    <template if:true={personalDetailPage}>
+        <c-personal-detail-comp onback ={backFrompersonalDetail}></c-personal-detail-comp>
+    </template>
+
+    <template  if:true={profdetailsaPage}>
+        <c-prof-detail-comp onback ={backfromprofdetails}></c-prof-detail-comp>
+    </template>
+
+    <template if:true={projectDetailsPage}>
+        <c-project-detail onback={backfromprojectdetails}></c-project-detail>
+    </template>
+
+    <template if:true={educationDetailsPage}>
+        <c-education-comp onback={backfromeducation} ></c-education-comp>
+        
+    </template>
+
+    <lightning-button label="Basic Details" data-id="BasicDetailsPage" onclick={Basic}></lightning-button> -->
+    <lightning-button label="personal Detail"  onclick={personalDetailPage}></lightning-button>
+    <lightning-button label="professional Details"  onclick={profdetailsaPage}></lightning-button>
+    <lightning-button label="project Details"  onclick={projectDetailsPage}></lightning-button>
+    <lightning-button label="Education Details"  onclick={educationDetailsPage}></lightning-button>
+
+</template>

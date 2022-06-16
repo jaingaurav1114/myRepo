@@ -1,0 +1,80 @@
+<template>
+    <lightning-tabset variant="vertical">
+
+ <!-- Basic Details-->
+        <lightning-tab label="Basic Details">
+            <lightning-input label="First Name" value={fname} type="text" onchange={basicHandler} ></lightning-input>
+            <lightning-input label="Last Name" value={lname} type="text" onchange={basicHandler} ></lightning-input>
+            <lightning-input label="Email" value={email} type="email" onchange={basicHandler} ></lightning-input>
+              <footer class="slds-modal__footer">
+               
+                <lightning-button label="Save" onclick={onSave}></lightning-button>
+                <lightning-input label="upload" type="file" onchange={openFileUpload} accept=".xls .csv .pdf .png .doc .docx .xlsx"></lightning-input>
+                <lightning-button label="Submit" onclick={handleClick}></lightning-button>
+
+                
+            </footer>
+        </lightning-tab>
+          <!-- Personal Details -->
+
+          <lightning-tab label="Personal Details"> 
+            <lightning-input type="text"  label="Address" 
+            value= {address} onchange={handleAddress}></lightning-input>
+            
+            <lightning-input type="number" label="Phone"  value= {phone} onchange={handlePhone}></lightning-input>
+            
+            <template if:true={Country_cPicklist.data}>
+                <lightning-combobox name="progress" label="Country" value={country} placeholder="Select Country"
+                    options={Country_cPicklist.data.values} onchange={handleCountry}>
+                </lightning-combobox>
+            </template>
+           
+            <template if:true={STATEpicklist.data}>
+                <lightning-combobox name="progress" label="State" value={state} placeholder="Select State"
+                    options={STATEpicklist.data.values} onchange={handleState}>
+                </lightning-combobox>
+            </template>
+            <template if:true={City_cpicklist.data}>
+                <lightning-combobox name="progress" label="City" value={city} placeholder="Select City"
+                    options={City_cpicklist.data.values} onchange={handleCity}>
+                </lightning-combobox>
+            </template> 
+
+            <lightning-input type="Date" label="DOB" 
+            value= {DOB} onchange={handleDOB}></lightning-input>
+
+            <lightning-input type="text"  label="Place of Birth"
+            value= {placeOfBirth} onchange={handlePlaceOfBirth}></lightning-input>
+
+            <lightning-input type="number"  label="postal code" name="postal code"
+           value= {postalcode} onchange={handlePostalCode}></lightning-input>
+
+        </lightning-tab>
+      
+          <!-- Professtional Details -->
+         <lightning-tab label="Professtional Details">
+
+            <lightning-input label="Job Title" value={jobTitle} onchange={profDetailHandler} type="text"></lightning-input>
+                            
+            <lightning-input label="Comapny Name" value={companyName} onchange={profDetailHandler} type="text"></lightning-input>
+            <lightning-input label="Job Start Date" value={jStartDate} onchange={profDetailHandler} type="Date"></lightning-input>
+                
+            <lightning-input label="Job End Date" value={jEndDate} onchange={profDetailHandler} type="Date"></lightning-input>
+            <lightning-input label="City" value={jobCity} onchange={profDetailHandler} type="text"></lightning-input><br/>
+            <lightning-input-rich-text label="Professional Summary" value={profSumm} onchange={profDetailHandler} placeholder="Professional Summary"></lightning-input-rich-text>
+         </lightning-tab>
+         
+                <!-- Project Details -->
+         <lightning-tab label="Project Details">
+            <lightning-input label="Project Name" type="text" value={projectName} onchange={handleProjectName}></lightning-input>
+            <lightning-input label="Project Duration" type="text" value={projectDuration} onchange={handleProjectDuration}></lightning-input>
+            <lightning-input label="Role and Responsility" type="text" value={projectRole} onchange={handleProjectRole}></lightning-input><br/>
+            <lightning-input-rich-text placeholder="Project Description" value={projectDescription} onchange={handleProjectDescription}></lightning-input-rich-text>
+         </lightning-tab>
+
+          <!-- Education Detail Template -->
+          <lightning-tab label=" Education Detail Template"></lightning-tab>
+       
+
+    </lightning-tabset>
+</template>

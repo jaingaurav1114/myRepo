@@ -1,0 +1,219 @@
+<template>
+  
+    <!-- Basic Details Template -->
+
+    <lightning-card>
+    <template if:true={isModalOpen}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Basic Details</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-input label="First Name" value={fname} type="text" onchange={basicHandler} ></lightning-input>
+                    <lightning-input label="Last Name" value={lname} type="text" onchange={basicHandler} ></lightning-input>
+                    <lightning-input label="Email" value={email} type="email" onchange={basicHandler} ></lightning-input>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={personalDetailClick} title="Next">Next</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    </lightning-card>
+
+    <!-- Personal Detail Template -->
+
+    <template if:true={isPersonalModal}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-02" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Personal Details</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+
+                    <div class="slds-col slds-size_1-of-2">
+                     
+                      <lightning-input type="text"  label="Address" 
+                         value= {Address} onchange={handleAddress}></lightning-input>
+            
+                    </div>
+                
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input type="number" label="Phone" class="phoneValidate" 
+                      value= {Phone} onchange={handlePhone}></lightning-input>
+                </div>
+            
+                <template if:true={Country_cPicklist.data}>
+                    <lightning-combobox name="progress" label="Country" value={country} placeholder="Select Country"
+                        options={Country_cPicklist.data.values} onchange={handlecountry}>
+                    </lightning-combobox>
+                </template>
+
+                <template if:true={state_cpicklist.data}>
+                    <lightning-combobox name="progress" label="State" value={state} placeholder="Select State"
+                        options={state_cpicklist.data.values} onchange={handlestate}>
+                    </lightning-combobox>
+                </template>
+
+
+                 <template if:true={City_cpicklist.data}>
+                    <lightning-combobox name="progress" label="City" value={City} placeholder="Select City"
+                        options={City_cpicklist.data.values} onchange={handleCity}>
+                    </lightning-combobox>
+                </template> 
+                  
+                <!-- <div class="slds-col slds-size_1-of-2">
+                  <lightning-input type="text" label="country" 
+                     value= {country} onchange={handlecountry}></lightning-input>
+                </div> -->
+
+               
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input type="Date" label="DOB" 
+                     value= {DOB} onchange={handleDOB}></lightning-input>
+                </div>
+            
+            
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input type="text"  label="Place of Birth"
+                     value= {PlaceofBirth} onchange={handlePlaceofBirth}></lightning-input>
+                </div>
+              
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input type="number"  label="postal code" class="validate" name="postal code"
+                     pattern="[0-9]{6}" message-when-pattern-mismatch="Enter valid postal code" value= {postalcode} onchange={handlepostalcode}></lightning-input>
+                </div>
+            </div>
+                         
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={prevBasicDetail} title="Back">Back</button>
+                    <button class="slds-button slds-button_brand" onclick={profDetailClick} title="Next">Next</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+        
+    </template>
+
+
+    <!-- Professional Detail Template -->
+
+    <lightning-card title="Professional Details">
+        <template if:true={isProfModal}>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="0" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-03" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        
+                        <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Professional Details</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-03">
+                        
+                        <lightning-input label="Job Title" value={jobTitle} onchange={profDetailHandler} type="text"></lightning-input>
+                            
+                        <lightning-input label="Comapny Name" value={companyName} onchange={profDetailHandler} type="text"></lightning-input>
+                        <lightning-input label="Job Start Date" value={jStartDate} onchange={profDetailHandler} type="Date"></lightning-input>
+                            
+                        <lightning-input label="Job End Date" value={jEndDate} onchange={profDetailHandler} type="Date"></lightning-input>
+                        <lightning-input label="City" value={jobCity} onchange={profDetailHandler} type="text"></lightning-input><br/>
+                        <lightning-input-rich-text label="Professional Summary" value={summ} onchange={profDetailHandler} placeholder="Professional Summary"></lightning-input-rich-text>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={prevPersonalDetail} title="Back">Back</button>
+                        <button class="slds-button slds-button_brand" onclick={projectDetailClick} title="Next">Next</button>
+                    </footer>
+                    </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+
+    <!-- Project Detail Template -->
+
+    <lightning-card title="Project Details">
+        <template if:true={isProjModal}>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="0" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-04" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                    
+                        <h2 id="modal-heading-04" class="slds-text-heading_medium slds-hyphenate">Project Details</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-04">
+                        <lightning-input label="Project Name" value={projectName} onchange={handleProjectName}></lightning-input>
+                        <lightning-input label="Project Duration" value={projectDuration} onchange={handleProjectDuration}></lightning-input>
+                        <lightning-input label="Role and Responsility" value={projectRole} onchange={handleProjecRole}></lightning-input><br/>
+                        <lightning-input-rich-text placeholder="Project Description" value={projectDescription} onchange={handleProjectDescription}></lightning-input-rich-text>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={prevProfDetail} title="Back">Back</button>
+                        <button class="slds-button slds-button_brand" onclick={educationDetailClick} title="Next">Next</button>
+                    </footer>
+                    </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+
+     <!-- Education Detail Template -->
+
+    <lightning-card title="Education Details">
+        <template if:true={isEduModal}>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-05" aria-modal="true" aria-describedby="modal-content-id-05" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        
+                        <h2 id="modal-heading-05" class="slds-text-heading_medium slds-hyphenate">Education Details</h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-05">
+                        <!-- <lightning-input  value={schCollege} label="School/College" onchange={eduDetailHandler} type="picklist" ></lightning-input> -->
+                        <template if:true={SchoolandCollegepicklist.data}>
+                            <lightning-combobox name="progress" label="School/College" value={schCollege} placeholder="Select School/College "
+                                options={SchoolandCollegepicklist.data.values} onchange={eduDetailHandler}></lightning-combobox>
+                        </template>
+
+                        <lightning-input  value={schCollegeName} label="School Name/College Name" onchange={schCollegeName} type="text" ></lightning-input>
+                         <lightning-input  value={startDate} label="Start Date" onchange={eduDetailHandler} type="date" ></lightning-input>
+                        <lightning-input  value={endDate} label="End Date" onchange={eduDetailHandler} type="date"></lightning-input>
+                        <lightning-input value={eduCity} label="Education City" onchange={eduDetailHandler} type="text"></lightning-input>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={prevProjectDetail} title="Back">Back</button>
+                        <button class="slds-button slds-button_brand" onclick={onSave} title="Submit">Submit</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+</template>

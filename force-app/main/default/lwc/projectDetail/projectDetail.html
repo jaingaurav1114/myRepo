@@ -1,0 +1,14 @@
+<template>
+    
+    <lightning-card title="Project Details">
+        
+        <lightning-input label="Project Name" value={projectName} onchange={projDetailsHandler}></lightning-input>
+        <lightning-input label="Project Duration" value={projectDuration} onchange={projDetailsHandler}></lightning-input>
+        <lightning-input label="Role and Responsility" value={projectRole} onchange={projDetailsHandler}></lightning-input><br/>
+        <lightning-input-rich-text placeholder="Project Description" value={projectDescription} onchange={projDetailsHandler}></lightning-input-rich-text>
+        
+        <lightning-button label="Cancel" onclick={cancelHandle}></lightning-button>
+        <lightning-button label="Submit" onclick={submitHandle}></lightning-button>
+
+    </lightning-card>
+</template>

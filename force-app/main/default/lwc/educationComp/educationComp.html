@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Education Details">
+        <lightning-input label="School/College" type="picklist" value={schCollege} onchange={eduDetailHandler}></lightning-input>
+        <lightning-input label="School Name/College Name" type="text" value={schCollegeName} onchange={eduDetailHandler}></lightning-input>
+        <lightning-input label="Start Date" type="date" value={startDate} onchange={eduDetailHandler}></lightning-input>
+        <lightning-input label="End Date" type="date" value={endDate} onchange={eduDetailHandler}></lightning-input>
+        <lightning-input label="Education City" type="text" value={eduCity} onchange={eduDetailHandler}></lightning-input>
+        
+        <lightning-button label="Cancel" onclick={cancelHandle}></lightning-button>
+        <lightning-button label="Submit" onclick={submitHandle}></lightning-button>
+    
+    </lightning-card>
+</template>

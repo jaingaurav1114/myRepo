@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>newResume</members>
+		<members>projectDetail</members>
+		<members>resume</members>
+		<members>saveresume</members>
+		<members>tabexample</members>
+		<members>tabrecord</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<version>53.0</version>
+</Package>

@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Create Account Record using LDS">
+        
+            <lightning-layout-item size="6">
+                <!-- Displaying fields to get information. -->
+                <lightning-input class="slds-p-around_medium" label="firstName" name="firstName" 
+                    onchange={fnameChangedHandler}></lightning-input>
+
+                <lightning-input class="slds-p-around_medium" label="Last Name" name="lastName" 
+                    onchange={lnumberChangedHandler}></lightning-input>
+
+                <lightning-input class="slds-p-around_medium" label="email" type="email" name="email" 
+                    onchange={emailChangedHandler}></lightning-input>
+                <br/>
+                <lightning-button class="slds-m-left_x-small" label="Create Resume" variant="brand" 
+                    onclick={createAccount}></lightning-button>
+            </lightning-layout-item>
+    
+    </lightning-card>
+</template>

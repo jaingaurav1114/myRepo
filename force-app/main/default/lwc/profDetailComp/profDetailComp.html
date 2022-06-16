@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Professional Detail">
+        
+        <lightning-input label="Professional Summary" type="text" value={summ} onchange={profDetailHandler}></lightning-input>
+        <lightning-input label="Job Title" type="text" value={jobTitle} onchange={profDetailHandler}></lightning-input>
+        
+        <lightning-input label="Comapny Name" type="text" value={companyName} onchange={profDetailHandler}></lightning-input>
+        <lightning-input label="Job Start Date" type="Date" value={jStartDate} onchange={profDetailHandler}></lightning-input>
+        
+        <lightning-input label="Job End Date" type="Date" value={jEndDate} onchange={profDetailHandler}></lightning-input>
+        <lightning-input label="City" type="text" value={jobCity} onchange={profDetailHandler}></lightning-input>
+    
+        <lightning-button label="Cancel" onclick={cancelHandle}></lightning-button>
+        <lightning-button label="Submit" onclick={submitHandle}></lightning-button>
+    </lightning-card>
+    
+</template>
